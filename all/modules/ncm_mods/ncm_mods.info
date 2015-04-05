@@ -1,0 +1,4 @@
+name = Netzwerk Mods
+core = 7.x
+dependencies[] = webform
+dependencies[] = mailchimp

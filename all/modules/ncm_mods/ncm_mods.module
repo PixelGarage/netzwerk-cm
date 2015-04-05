@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function ncm_mods_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'webform_client_form_41') {
+    array_unshift($form['#submit'], '_ncm_mailchimp_subscribe');
+  } elseif ($form_id == 'user_pass') {
+  	$form['actions']['submit']['#value'] = 'Senden';
+  }
+}
+
+/**
+ * FAPI #submit handler. Execute PHP submit handling.
+ */
+function _ncm_mailchimp_subscribe($form, &$form_state) {
+	$list = (object)mailchimp_get_list('312bf63dbf');
+	$list->mc_list_id = '312bf63dbf';
+	$list->label = 'Newsletter';
+	@mailchimp_subscribe_user($list, $form_state['values']['submitted']['e_mail'], array());
+}
+
+function ncm_mods_block_view_alter(&$data, $block) {
+	if ($block->module == 'menu_block' && $block->delta == 6) {
+		global $user;
+		if ($user->uid) {
+			$data['subject'] = t('Logged as') . ': ' . format_username($user);
+		}
+	}
+}
