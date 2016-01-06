@@ -2,7 +2,6 @@ Specific Project Details:
 
 Changes in Modules (Patches)
 ============================
-1)context_menu_block 7.x-3.x-dev has patch applied
 
 
 
