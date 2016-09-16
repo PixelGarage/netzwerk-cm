@@ -11,7 +11,7 @@
   <?php print render($title_suffix); ?>
   <?php if ($display_submitted): ?>
   <footer class="submitted">
-  	<?php print $name; ?> - <?php print format_date($node->created, 'custom', 'j. F Y'); ?> - <strong><?php echo format_plural($node->comment_count, '1 comment', '@count comments'); ?> -</strong>
+  	<?php print $name; ?> - <?php print format_date($node->created, 'custom', 'j. F Y'); ?>
   	<?php print render($content['field_category']); ?>
   </footer>
   <?php endif; ?>
@@ -24,12 +24,12 @@
     ?>
   </div>
   
-  <div class="clearfix">
+  <!--div class="clearfix">
     <?php if (!empty($content['links'])): ?>
       <nav class="links node-links clearfix"><?php print render($content['links']); ?></nav>
     <?php endif; ?>
     <?php print render($content['comments']); ?>
-  </div>
+  </div-->
 	<?php if ($page): ?>
 		<div class="go_back"><?php print l('&lt; ' . t('all News'), 'news', array('html' => true)); ?></div>
 	<?php endif; ?>
